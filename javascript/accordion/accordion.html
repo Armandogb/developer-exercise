@@ -57,7 +57,7 @@
         info[0].style.color = "red";
       }else{
         info[1].style.display = "none";
-        info[0].style.color = "purple";
+        info[0].style.color = "blue";
       }
     }
 
@@ -69,6 +69,7 @@
       var element =  accordion[i].children;
 
       accordion[i].addEventListener("click",showFold,false);
+      element[0].style.color = "blue";
       element[1].style.display = "none";
 
     }
