@@ -52,7 +52,7 @@ var QuoteList = Backbone.View.extend({
 });
 
 $(document).ready(function(){
-    var qList = new QuoteList();
+    var qList = new QuoteCatalog();
     var qGrid = new Backgrid.Grid({
     	columns: [ 
       		{ name: "source", editable: false, cell: "string" }, 
@@ -70,9 +70,6 @@ $(document).ready(function(){
     $(".quote-list").append(qGrid.render().el);
   	$(".pagination").append(pagination.render().el);
 
-   	qList.collection.fetch().done(function(){
-		self.render();
-	});
-
+  	qList.fetch();
 });
 
