@@ -5,8 +5,10 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+
   <script src="scripts/backbone_paginator.js"></script>
-  <script src="scripts/quote_model.js"></script>
+  <script src="scripts/backgrid.js"></script>
+  <script src="scripts/backgrid_paginator.js"></script>
 
 </head>
 <body>
@@ -14,13 +16,8 @@
 	<ul class="quote-list">
 	</ul>
 
-	<a href="#" class="next">next</a>
-
-	<script>
-		$(document).ready(function(){
-    		new QuoteList();
-    		
-		});
-	</script>
+	<div class="pagination"></div>
+	
+  <script src="scripts/quote_model.js"></script>
 </body>
 </html>

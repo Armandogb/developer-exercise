@@ -19,7 +19,6 @@ var QuoteCatalog = Backbone.PageableCollection.extend({
 
 var QuoteView = Backbone.View.extend({
 	tagName: 'li',
-
 	my_template: _.template("<strong><%= context %></strong> (<%= theme %>) - <%= quote %> - <%= source %>"),
 
 	initialize: function(){
@@ -45,8 +44,35 @@ var QuoteList = Backbone.View.extend({
 	render: function(){
 		this.collection.each(function(quote){
 			var quoteView = new QuoteView({ model: quote });
-			$('ul').append(quoteView.el);
+			this.$el.append(quoteView.el);
+			return this;
 		});
 	}
 
 });
+
+$(document).ready(function(){
+    var qList = new QuoteList();
+    var qGrid = new Backgrid.Grid({
+    	columns: [ 
+      		{ name: "source", editable: false, cell: "string" }, 
+      		{ name: "context", editable: false, cell: "string" }, 
+      		{ name: "quote", editable: false, cell: "string" }, 
+      		{ name: "theme", editable: false, cell: "string" }
+   		],
+    	collection: qList
+    });
+
+    var pagination = new Backgrid.Extension.Paginator({
+    	collection: qList
+    });
+
+    $(".quote-list").append(qGrid.render().el);
+  	$(".pagination").append(pagination.render().el);
+
+   	qList.collection.fetch().done(function(){
+		self.render();
+	});
+
+});
+
