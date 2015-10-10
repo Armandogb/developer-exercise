@@ -29,7 +29,8 @@ class Youtuber
 	end
 
 	def create_path(search_query)
-		"https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ search_query +"&type=video&maxResults=3&key=AIzaSyARfNmPqYgY-VlFAZT8VqPbowEYgWYaUps"
+		final = search_query.gsub!(/\s+/, "+").gsub!(/[^0-9A-Za-z]/, '')
+		"https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ final +"&type=video&maxResults=3&key=AIzaSyARfNmPqYgY-VlFAZT8VqPbowEYgWYaUps"
 	end
 
 	def show_results
